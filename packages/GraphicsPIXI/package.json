@@ -1,0 +1,15 @@
+{
+  "name": "@Boom/GraphicsPIXI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tests": "echo \"placeholder\" && exit 0",
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf ./dist && rm -rf tsconfig.build.tsbuildinfo",
+    "compile": "tsc -b tsconfig.build.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": ""
+}

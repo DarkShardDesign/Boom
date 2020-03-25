@@ -1,0 +1,22 @@
+{
+    "extends": "../../tsconfig.build.json",
+
+    "compilerOptions": {
+        "composite": true,
+        "declaration": true,
+        "outDir": "./dist",
+        "rootDir": "./src"
+    },
+
+    "references": [
+        {
+            "path": "../../packages/GraphicsPIXI/tsconfig.build.json" 
+        },{
+            "path": "../../packages/NetworkAxios/tsconfig.build.json"
+        }
+    ],
+
+    "include": [
+        "src/**/*"
+    ]
+}
