@@ -1,11 +1,7 @@
 language: node_js
-
 node_js:
-    - node
-    - 'lts/*'
-
+  - 10
+install:
+  - yarn install
 script:
-    "yarn build",
-    "yarn tests"
-
-cache: yarn
+  - yarn build && yarn tests
