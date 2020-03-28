@@ -37,7 +37,10 @@ const Observable = (parent = {}, name, value = undefined): TObservable => {
       return this.__proto__.unsubscribe.bind(this, listener);
     }
 
-
+    /**
+     * clean up when destroyed
+     * unsubscribes all listeners
+     */
     this.__proto__.destroy = () => {
         this._observableListeners.forEach((listener: TListener) => {
           this._unsubscribe(listener);

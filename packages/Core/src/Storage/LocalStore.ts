@@ -52,6 +52,7 @@ export class Stores {
      */
     removeStore(name) {
         const store = this[name];
+        store.destroy();
         delete this[name];
 
         return store;
