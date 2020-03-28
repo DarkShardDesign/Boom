@@ -16,7 +16,8 @@
   "scripts": {
     "build": "npx lerna bootstrap && lerna run build",
     "tests": "npx lerna run tests",
-    "demo": "cd apps/demo && npm run start"
+    "demo": "cd apps/demo && npm run start",
+    "push": "npx lerna run tests && git push --all"
   },
   "dependencies": {}
 }
