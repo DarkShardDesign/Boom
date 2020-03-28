@@ -46,13 +46,13 @@ These modules will be developed later to add support for specific types of games
 `npm install` install mono repo dependencies (lerna, webpack, typescript etc)
 `npm run build` to compile and bundle all the packages, including installing dependencies and linking packages
 `npm run demo` to run the demo app
-`npm run push` push your recent commits (all of them) to the origin repository, ensuring tests pass first
+`npm run push` push your recent commits (all of them) to the origin repository, ensuring tests and build pass first
 
 #### YARN
 `yarn install` install mono repo dependencies (lerna, webpack, typescript etc)
 `yarn build` to compile and bundle all the packages, including installing dependencies and linking packages
 `yarn demo` to run the demo app
-`yarn push` push your recent commits (all of them) to the origin repository, ensuring tests pass first
+`yarn push` push your recent commits (all of them) to the origin repository, ensuring tests and build pass first
 
 #### Terminal
 # NOTE dependencies will still need installed by a package manager
