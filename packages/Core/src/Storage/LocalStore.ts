@@ -18,6 +18,11 @@ class Store {
 
 /**
  * object containing the currently loaded stores
+ * 
+ * @example
+ * const MyStore = new Stores()
+ * MyStore.createStore({ freeGames: 10 });
+ * MyStore.freeGames.listen((newVal, oldVal) => console.log('freeGames count changed', newVal, oldVal))
  */
 export class Stores {
     /**
