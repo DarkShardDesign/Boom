@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tests": "echo \"placeholder\" && exit 0",
+    "tests": "karma start karma.conf.js",
     "build": "npm run clean && webpack",
     "clean": "rm -rf ./dist"
   },

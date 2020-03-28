@@ -7,7 +7,7 @@
     "@Boom/Engine": "^1.0.0"
   },
   "scripts": {
-    "tests": "echo \"placeholder\" && exit 0",
+    "tests": "karma start karma.conf.js",
     "start": "echo \"demo app starting\" && exit 0",
     "build": "npm run clean && npx webpack",
     "clean": "rm -rf ./dist"
