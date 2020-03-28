@@ -1,13 +1,13 @@
-import Observable from "../Shared/Observable";
+import ObservableMixin from "../Shared/Mixins/ObservableMixin";
 
-class Store {
+export class Store {
     /**
      * adds a new observable property to this store
-     * @param {string} name the name for this property
-     * @param {any} value the value for this property
+     * @param { string } name the name for this property
+     * @param { any } value the value for this property
      */
     add(name, value) {
-        Observable(this, name, value);
+        ObservableMixin(this, name, value);
     }
 
     /**
