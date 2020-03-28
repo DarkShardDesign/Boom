@@ -48,12 +48,16 @@ export type TUnsubscriber = () => Promise<any>;
 /**
  * Type for the internal Observable objects
  */
-export type TObservable = TDynamicType;
+export type IObservable = TDynamicType & {
+    _internalValue: any;
+    listen: (newVal?: any, oldVal?: any, observable?: IObservable) => TUnsubscriber;
+    unsubscribe: (listener: TListener) => any;
+}
 
 /**
  * Type for the function used as a listener
  */
-export type TListener = (newValue: any, oldValue: any, observable: TObservable) => undefined;
+export type TListener = (newValue: any, oldValue: any, observable: IObservable) => undefined;
 
 export const enum ObservableConstants {
     ListenerRemoved = 0,

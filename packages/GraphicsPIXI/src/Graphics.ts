@@ -1,5 +1,5 @@
 import { IGraphics } from '@Boom/Core/src/Interfaces/Graphics/IGraphics';
-import { TConfig, TResourceHandle, TEventHandler } from '@Boom/Core/src/Interfaces/GeneralInterfaces';
+import { TConfig, TResourceHandle, TEventHandler } from '@Boom/Core/src/types';
 
 export class GraphicsPIXI implements IGraphics {
     /**
