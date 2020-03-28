@@ -2,13 +2,11 @@
   "name": "@Boom/Core",
   "version": "1.0.0",
   "main": "index.js",
+  "types": "types.d.ts",
   "license": "",
   "scripts": {
     "tests": "karma start karma.conf.js",
     "build": "npm run clean && webpack",
     "clean": "rm -rf ./dist"
-  },
-  "dependencies": {
-    "@Boom/SoundPIXI": "^1.0.0"
   }
 }
