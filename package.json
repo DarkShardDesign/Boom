@@ -8,13 +8,15 @@
   "license": "",
   "devDependencies": {
     "lerna": "^3.20.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "ts-loader": "^6.2.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
-    "build": "lerna run build",
-    "tests": "lerna run tests",
+    "build": "npx lerna bootstrap && lerna run build",
+    "tests": "npx lerna run tests",
     "demo": "cd apps/demo && npm run start"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

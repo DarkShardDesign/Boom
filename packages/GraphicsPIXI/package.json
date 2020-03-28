@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "tests": "echo \"placeholder\" && exit 0",
-    "build": "npm run clean && npm run compile",
-    "clean": "rm -rf ./dist && rm -rf tsconfig.build.tsbuildinfo",
-    "compile": "tsc -b tsconfig.build.json"
+    "build": "npm run clean && webpack",
+    "clean": "rm -rf ./dist"
   },
   "keywords": [],
   "author": "",
-  "license": ""
+  "license": "",
+  "dependencies": {
+    "@Boom/Core": "^1.0.0"
+  }
 }

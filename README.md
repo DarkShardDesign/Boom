@@ -41,5 +41,17 @@ These modules will be developed later to add support for specific types of games
     - support roulette based games
 
 ## Running
-`npm run build` to build all the packages, including installing dependencies
+#### NPM
+`npm install` install mono repo dependencies (lerna, webpack, typescript etc)
+`npm run build` to compile and bundle all the packages, including installing dependencies and linking packages
 `npm run demo` to run the demo app
+
+#### YARN
+`npm install` install mono repo dependencies (lerna, webpack, typescript etc)
+`yarn build` same as `npm run build`
+`yarn demo` same as `npm run demo`
+
+#### Terminal
+# NOTE dependencies will still need installed by a package manager
+`npx lerna bootstrap` install all dependencies and link mono repo packages
+`npx lerna run build` build and compile bundles
