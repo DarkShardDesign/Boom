@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@Boom/Engine": "^1.0.0"
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/inert": "^6.0.1"
   },
   "scripts": {
     "tests": "karma start karma.conf.js",
@@ -14,5 +15,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.3"
+  }
 }

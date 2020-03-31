@@ -26,8 +26,7 @@
   "scripts": {
     "build": "npx lerna bootstrap && lerna run build",
     "tests": "npx lerna run tests",
-    "demo": "cd apps/demo && npm run start",
+    "demo": "docker build -t darksharddesign/boom-demo . && docker run -p 8080:8080 -d darksharddesign/boom-demo && echo \"demo app starting on your docker IP port 8080 (ex 192.168.99.101:8080)\"",
     "push": "npx lerna run tests && yarn build && git push --all"
-  },
-  "dependencies": {}
+  }
 }
