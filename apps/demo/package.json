@@ -17,6 +17,5 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "html-webpack-plugin": "^4.0.3"
   }
 }
