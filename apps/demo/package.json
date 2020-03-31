@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
-    "@hapi/inert": "^6.0.1"
+    "@hapi/inert": "^6.0.1",
+    "html-webpack-plugin": "^4.0.3"
   },
   "scripts": {
     "tests": "karma start karma.conf.js",
@@ -16,6 +17,5 @@
   "keywords": [],
   "author": "",
   "license": "",
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

@@ -21,8 +21,7 @@
     "tslint-config-standard-plus": "^2.3.0",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "html-webpack-plugin": "^4.0.3"
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "build": "npx lerna bootstrap && lerna run build",
