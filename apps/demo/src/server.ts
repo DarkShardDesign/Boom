@@ -3,7 +3,7 @@ import * as url from 'url';
 import * as fs from 'fs';
 import * as path from 'path';
 // you can pass the parameter in the command line. e.g. node static_server.js 3000
-const port = process.argv[2] || '80';
+const port = process.argv[2] || process.env.PORT || '80';
 
 // maps file extention to MIME types
 // full list can be found here: https://www.freeformatter.com/mime-types-list.html
