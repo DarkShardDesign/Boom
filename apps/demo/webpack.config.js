@@ -1,8 +1,29 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const baseConfig = require('../../webpack.base.config');
 
 module.exports = {
-    entry: './src/index.ts',
+    ...baseConfig,
+    entry: {
+        demo: './src/index.ts'
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Boom Demo\'s',
+            scriptLoading: 'defer',
+            template: './src/assets/index.html',
+            filename: 'index.html'
+        })
+    ]
+}
+const path = require('path');
+
+module.exports = {
+    entry: {
+        demo: './src/index.ts'
+    },
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, '../../dist')
+    },
     module: {
         rules: [
             {
@@ -14,17 +35,5 @@ module.exports = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-    },
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Boom Demo\'s',
-            scriptLoading: 'defer',
-            template: './src/assets/index.html',
-            filename: 'index.html'
-        })
-    ]
+    }
 }

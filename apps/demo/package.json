@@ -11,7 +11,7 @@
   "scripts": {
     "tests": "karma start karma.conf.js",
     "start": "echo \"demo app starting\" && exit 0",
-    "build": "npm run clean && npx webpack",
+    "build": "webpack --config webpack.config.js && cp ./server.js ../../dist/server.js",
     "clean": "rm -rf ./dist"
   },
   "keywords": [],

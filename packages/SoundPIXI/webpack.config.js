@@ -1,21 +1,8 @@
-const path = require('path');
+const baseConfig = require('../../webpack.base.config');
 
 module.exports = {
-    entry: './src/index.ts',
-    module: {
-        rules: [
-            {
-                test: /\.ts|tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
-            }
-        ]
-    },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
-    },
-    output: {
-        filename: 'bundle-SoundPIXI.js',
-        path: path.resolve(__dirname, 'dist')
+    ...baseConfig,
+    entry: {
+        "sound-pixi": './src/index.ts'
     }
 }

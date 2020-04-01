@@ -1,3 +1,2 @@
-build:
-    docker:
-        web: dockerfile
+run:
+    web: node ./dist/server.js
