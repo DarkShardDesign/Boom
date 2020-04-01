@@ -36,7 +36,7 @@ http.createServer(function (req, res) {
   // Avoid https://en.wikipedia.org/wiki/Directory_traversal_attack
   // e.g curl --path-as-is http://localhost:9000/../fileInDanger.txt
   // by limiting the path to current directory only
-  let urlpathname = parsedUrl.pathname || '/index.html';
+  let urlpathname = !parsedUrl.pathname || parsedUrl.pathname === '/' ? '/index.html' : parsedUrl.pathname;
   let pathname = process.cwd() + filesRoot + urlpathname;
   let sanitizePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
 
