@@ -1,10 +1,10 @@
 const baseConfig = require('../../webpack.base.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const clientConfig = {
     ...baseConfig,
     entry: {
-        demo: './src/index.ts'
+        "js/demo": './src/index.ts'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -13,5 +13,18 @@ module.exports = {
             template: './src/assets/index.html',
             filename: 'index.html'
         })
-    ]
+    ],
 }
+
+const serverConfig = {
+    ...baseConfig,
+    entry: {
+        "server": './src/server.ts'
+    },
+    target: 'node',
+    node: {
+        fs: 'empty'
+    }
+}
+
+module.exports = [ serverConfig, clientConfig ];

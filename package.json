@@ -8,7 +8,7 @@
   "license": "",
   "devDependencies": {
     "@types/jasmine": "^3.5.10",
-    "@types/node": "^13.9.5",
+    "@types/node": "^13.9.8",
     "jasmine-core": "^3.5.0",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "^3.1.0",
@@ -26,7 +26,12 @@
   "scripts": {
     "build": "npx lerna bootstrap && lerna run build",
     "tests": "npx lerna run tests",
+    "start": "node dist/server.bundle.js",
     "demo": "docker build -t darksharddesign/boom-demo . && docker run -p 8080:8080 -d darksharddesign/boom-demo && echo \"demo app starting on your docker IP port 8080 (ex 192.168.99.101:8080)\"",
     "push": "npx lerna run tests && yarn build && git push --all"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/inert": "^6.0.1"
   }
 }
