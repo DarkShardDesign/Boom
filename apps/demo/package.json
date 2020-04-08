@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@hapi/hapi": "^19.1.1",
-    "@hapi/inert": "^6.0.1",
-    "hapi": "^18.1.0",
     "html-webpack-plugin": "^4.0.4"
   },
   "scripts": {
@@ -19,7 +16,6 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "@types/hapi": "^18.0.3",
     "@types/node": "^13.9.8"
   }
 }
