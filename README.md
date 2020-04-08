@@ -64,11 +64,11 @@ These modules will be developed later to add support for specific types of games
 `yarn build` to compile and bundle all the packages, including installing dependencies and linking packages
 
 ## NOTE: at least 1 build needs to have been ran before these will work
-`yarn start` runs bootstrap, build in watch mode and runs the demo app in watch mode -- needed by heroku
+`yarn start` starts the demo app -- needed by heroku
 # WINDOWS
-`yarn start-win` runs bootstrap, then runs build in watch mode in one console and the demo app in watch mode in another console
+`yarn start-win` starts the demo app
 
-`yarn dev` `yarn dev-win` run the build script and the start script for mac/linus or windows respectively
+`yarn dev` `yarn dev-win` run the build script and the the demo app in watch mode for mac/linus or windows respectively
 
 `yarn test` run all tests (unit and e2e)
 `yarn test-unit` run all unit tests

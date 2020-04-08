@@ -10,7 +10,7 @@
     "html-webpack-plugin": "^4.0.4"
   },
   "scripts": {
-    "tests": "karma start karma.conf.js",
+    "test-unit": "karma start karma.conf.js",
     "build": "webpack --config webpack.config.js --mode development",
     "production": "webpack --config webpack.config.js --mode production",
     "watch": "webpack --config webpack.config.js --watch --mode development"
