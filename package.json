@@ -6,6 +6,9 @@
   "repository": "git@github.com:DarkShardDesign/Boom.git",
   "author": "Sean Przybyla <sean@darksharddesign.co.uk>",
   "license": "",
+  "engines": {
+    "node": "12.x"
+  },
   "devDependencies": {
     "@types/jasmine": "^3.5.10",
     "@types/node": "^13.9.8",
@@ -16,6 +19,7 @@
     "karma-spec-reporter": "^0.0.32",
     "karma-typescript": "^5.0.1",
     "lerna": "^3.20.2",
+    "nodemon": "^2.0.2",
     "ts-loader": "^6.2.2",
     "tslint": "^6.1.0",
     "tslint-config-standard-plus": "^2.3.0",
@@ -24,10 +28,15 @@
     "webpack-cli": "^3.3.11"
   },
   "scripts": {
-    "build": "npx lerna bootstrap && lerna run build",
-    "tests": "npx lerna run tests",
-    "start": "node dist/server.bundle.js",
-    "demo": "docker build -t darksharddesign/boom-demo . && docker run -p 8080:8080 -d darksharddesign/boom-demo && echo \"demo app starting on your docker IP port 8080 (ex 192.168.99.101:8080)\"",
+    "build": "yarn install && yarn build-step2",
+    "build-step2": "npx lerna bootstrap && lerna run build",
+    "build-production": "npx lerna bootstrap && lerna run production",
+    "clean": "rm -rf ./dist",
+    "test": "npx lerna run tests",
+    "start": "npx lerna run watch --parallel & nodemon dist/server.bundle.js",
+    "start-win": "start npx lerna run watch --parallel && start nodemon dist/server.bundle.js",
+    "dev": "yarn build && yarn start",
+    "dev-win": "yarn build && yarn start-win",
     "push": "npx lerna run tests && yarn build && git push --all"
   },
   "dependencies": {

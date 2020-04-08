@@ -11,9 +11,9 @@
   },
   "scripts": {
     "tests": "karma start karma.conf.js",
-    "start": "echo \"demo app starting\" && exit 0",
-    "build": "webpack --config webpack.config.js",
-    "clean": "rm -rf ./dist"
+    "build": "webpack --config webpack.config.js --mode development",
+    "production": "webpack --config webpack.config.js --mode production",
+    "watch": "webpack --config webpack.config.js --watch --mode development"
   },
   "keywords": [],
   "author": "",
