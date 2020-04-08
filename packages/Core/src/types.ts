@@ -4,7 +4,7 @@
  * any properties any structure
  */
 export type TDynamicType =  {
-   [key:string]: any
+    [key:string]: any
 }
 
 /**
@@ -44,3 +44,22 @@ export type TResponse = TDynamicType;
  * This will unsubscribe from the event being listened to when invoked
  */
 export type TUnsubscriber = () => Promise<any>;
+
+/**
+ * Type for the internal Observable objects
+ */
+export type IObservable = TDynamicType & {
+    _internalValue: any;
+    listen: (newVal?: any, oldVal?: any, observable?: IObservable) => TUnsubscriber;
+    unsubscribe: (listener: TListener) => any;
+}
+
+/**
+ * Type for the function used as a listener
+ */
+export type TListener = (newValue: any, oldValue: any, observable: IObservable) => undefined;
+
+export const enum ObservableConstants {
+    ListenerRemoved = 0,
+    ListenerNotFound = 1
+}

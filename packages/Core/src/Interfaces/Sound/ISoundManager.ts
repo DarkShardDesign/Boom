@@ -1,6 +1,6 @@
+import { TResourceHandle, TEventHandler } from '../../types';
 import { IResourceModule } from '../IResourceModule';
 import { IModule } from '../IModule';
-import { TResourceHandle, TEventHandler } from '../GeneralInterfaces';
 
 /**
  * simple string defining the sound mode
