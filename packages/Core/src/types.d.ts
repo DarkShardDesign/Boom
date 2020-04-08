@@ -1,73 +1,60 @@
-// Abstract types
 /**
  * Dynamic object
  * any properties any structure
  */
-export type TDynamicType =  {
-    [key:string]: any
-}
-
+export declare type TDynamicType = {
+    [key: string]: any;
+};
 /**
  * A primitive number type to represent a resource in context
  */
-export type TResourceHandle = number;
-
+export declare type TResourceHandle = number;
 /**
  * Dynamic config object used to pass configuration objects to modules
  */
-export type TConfig = TDynamicType;
-
-// Event types
+export declare type TConfig = TDynamicType;
 /**
  * Dynamic data object, used to pass data into event handlers
  */
-export type TEventData = TDynamicType;
-
+export declare type TEventData = TDynamicType;
 /**
  * event handler function signature
  */
-export type TEventHandler = (data: TEventData) => Promise<any>;
-
-// Network types
+export declare type TEventHandler = (data: TEventData) => Promise<any>;
 /**
  * Dynamic type used to represent network data packets
  */
-export type TDataPacket = TDynamicType;
-
+export declare type TDataPacket = TDynamicType;
 /**
  * Dynamic type used to represent server response packets
  */
-export type TResponse = TDynamicType;
-
+export declare type TResponse = TDynamicType;
 /**
  * Type for a function returned from a subscriber function
  * This will unsubscribe from the event being listened to when invoked
  */
-export type TUnsubscriber = () => Promise<any>;
-
+export declare type TUnsubscriber = () => Promise<any>;
 /**
  * Type for the internal Observable objects
  */
-export type IObservable = TDynamicType & {
+export declare type IObservable = TDynamicType & {
     _internalValue: any;
     listen: (newVal?: any, oldVal?: any, observable?: IObservable) => TUnsubscriber;
     unsubscribe: (listener: TListener) => any;
-}
-
+};
 /**
  * Type for the function used as a listener
  */
-export type TListener = (newValue: any, oldValue: any, observable: IObservable) => undefined;
-
-export const enum ObservableConstants {
+export declare type TListener = (newValue: any, oldValue: any, observable: IObservable) => undefined;
+export declare const enum ObservableConstants {
     ListenerRemoved = 0,
     ListenerNotFound = 1
 }
-
-export type BOOM = {
-    name: string
-}
-
+export declare type BOOM = {
+    name: string;
+};
 declare global {
-    interface Window { BOOM: any }
+    interface Window {
+        BOOM: any;
+    }
 }
