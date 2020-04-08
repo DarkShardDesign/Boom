@@ -4,8 +4,8 @@
     "compilerOptions": {
         "composite": true,
         "declaration": true,
-        "outDir": "./dist",
-        "rootDir": "./src"
+        "outDir": "../../dist",
+        "rootDir": "../../"    
     },
 
     "references": [],
