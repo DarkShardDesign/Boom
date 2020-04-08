@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@Boom/Engine": "^1.0.0"
+    "html-webpack-plugin": "^4.0.4"
   },
   "scripts": {
-    "tests": "karma start karma.conf.js",
-    "start": "echo \"demo app starting\" && exit 0",
-    "build": "npm run clean && npx webpack",
-    "clean": "rm -rf ./dist"
+    "test-unit": "karma start karma.conf.js",
+    "build": "webpack --config webpack.config.js --mode development",
+    "production": "webpack --config webpack.config.js --mode production",
+    "watch": "webpack --config webpack.config.js --watch --mode development"
   },
   "keywords": [],
   "author": "",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "@types/node": "^13.9.8"
+  }
 }

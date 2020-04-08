@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tests": "karma start karma.conf.js",
-    "build": "npm run clean && webpack",
-    "clean": "rm -rf ./dist"
+    "test-unit": "karma start karma.conf.js",
+    "build": "webpack --config webpack.config.js --mode development",
+    "production": "webpack --config webpack.config.js --mode production",
+    "watch": "webpack --config webpack.config.js --watch --mode development"
   },
   "keywords": [],
   "author": "",

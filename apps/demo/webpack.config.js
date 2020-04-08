@@ -1,21 +1,30 @@
-const path = require('path');
+const baseConfig = require('../../webpack.base.config');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-    entry: './src/index.ts',
-    module: {
-        rules: [
-            {
-                test: /\.ts|tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
-            }
-        ]
+const clientConfig = {
+    ...baseConfig,
+    entry: {
+        "js/demo": './src/index.ts'
     },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Boom Demo\'s',
+            scriptLoading: 'defer',
+            template: './src/assets/index.html',
+            filename: 'index.html'
+        })
+    ],
+}
+
+const serverConfig = {
+    ...baseConfig,
+    entry: {
+        "server": './src/server.ts'
     },
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+    target: 'node',
+    node: {
+        fs: 'empty'
     }
 }
+
+module.exports = [ serverConfig, clientConfig ];
