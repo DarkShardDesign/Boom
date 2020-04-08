@@ -29,8 +29,8 @@
   },
   "scripts": {
     "build": "yarn install && yarn build-step2",
-    "build-step2": "npx lerna bootstrap && lerna run build",
-    "build-production": "npx lerna bootstrap && lerna run production",
+    "build-step2": "npx lerna bootstrap && npx lerna run build",
+    "heroku-postbuild": "npx lerna bootstrap && npx lerna run production",
     "clean": "rm -rf ./dist",
     "test": "npx lerna run tests",
     "start": "npx lerna run watch --parallel & nodemon dist/server.bundle.js",
@@ -39,6 +39,7 @@
     "dev-win": "yarn build && yarn start-win",
     "push": "npx lerna run tests && yarn build && git push --all"
   },
+  "heroku-post-build": true,
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
     "@hapi/inert": "^6.0.1"
