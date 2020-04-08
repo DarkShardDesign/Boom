@@ -1,6 +1,6 @@
+import { TResourceHandle, TEventHandler, TConfig } from '../../types';
 import { IResourceModule } from '../IResourceModule';
 import { IModule } from '../IModule';
-import { TResourceHandle, TEventHandler, TConfig } from '../GeneralInterfaces';
 
 /**
  * render mode to switch to

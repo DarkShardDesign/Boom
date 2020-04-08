@@ -1,6 +1,6 @@
+import { TResourceHandle, TEventHandler, TDataPacket, TResponse, TUnsubscriber } from '../../types';
 import { IResourceModule } from '../IResourceModule';
 import { IModule } from '../IModule';
-import { TResourceHandle, TEventHandler, TDataPacket, TResponse, TUnsubscriber } from '../GeneralInterfaces';
 
 /**
  * Interface defining the API between the Network manager and the engine
