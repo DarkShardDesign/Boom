@@ -1,5 +1,5 @@
-import { createTemplate } from '@Boom/Core/src/Shared/Utils';
-import WebComponent from '@Boom/Core/src/web/WebComponent';
+import { createTemplate } from '@Boom/Core/Shared/Utils';
+import WebComponent from '@Boom/Core/Web/WebComponent';
 
 export default class HomePage extends WebComponent {
     constructor() {

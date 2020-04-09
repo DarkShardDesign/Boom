@@ -4,14 +4,20 @@
     "compilerOptions": {
         "composite": true,
         "declaration": true,
-        "outDir": "./dist",
-        "rootDir": "./src"
+        "outDir": "../../dist"
     },
 
-    "references": [
+    "references": [],
+    "exclude": [
+        "/**/*.spec*",
+        "node_modules"
     ],
 
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "../../packages/Core/src/**/*",
+        "../../packages/GraphicsPIXI/src/**/*",
+        "../../packages/SoundPIXI/src/**/*",
+        "../../packages/NetworkAxios/src/**/*"
     ]
 }

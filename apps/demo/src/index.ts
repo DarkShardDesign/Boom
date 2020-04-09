@@ -1,23 +1,21 @@
-import '@Boom/Core/src/types';
-import { logger, lazyLoader } from './utils';
-import { waitOnWindowProperty } from './utils/Wait';
+import '@Boom/Core/types';
+import { Logger, lazyLoader, waitOnWindowProperty } from '@Boom/Core/Shared/Utils';
 import Router from './services/Router';
 import HomePage from './components/HomePage';
-
-
-
+const LOG_PREFIX = 'DEMO - ';
+let appLogger = new Logger(LOG_PREFIX);
 const init = async function () {
-    logger.log('loading dynamic dependencies');
+    appLogger.log('loading dynamic dependencies');
     lazyLoader('js/engine.bundle.js');
 
     await waitOnWindowProperty('BOOM');
 
-    logger.log('Engine loaded');
+    appLogger.log('Engine loaded');
 
-    logger.log('Initialising the engine');
-    window.BOOM.init();
+    appLogger.log('Initialising the engine');
+    window.BOOM.init({});
     
-    logger.log('Initialising web app');
+    appLogger.log('Initialising web app');
 
     const RoutesMap = [
         {
@@ -28,6 +26,6 @@ const init = async function () {
     Router.init(RoutesMap);
 }
 
-logger.log('initialising...');
+appLogger.log('initialising...');
 
 init();

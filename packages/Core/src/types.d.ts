@@ -50,11 +50,16 @@ export declare const enum ObservableConstants {
     ListenerRemoved = 0,
     ListenerNotFound = 1
 }
-export declare type BOOM = {
+export interface ILogger {
+    log: (message: string) => void;
+}
+export declare type TBOOM = {
     name: string;
+    logger: ILogger;
+    init: (config?: any) => void;
 };
 declare global {
     interface Window {
-        BOOM: any;
+        BOOM: TBOOM;
     }
 }

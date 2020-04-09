@@ -4,8 +4,7 @@
     "compilerOptions": {
         "composite": true,
         "declaration": true,
-        "outDir": "../../dist",
-        "rootDir": "../../"    
+        "outDir": "../../dist"
     },
 
     "references": [],
@@ -15,6 +14,7 @@
     ],
 
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "../../packages/Core/src/**/*"
     ]
 }
