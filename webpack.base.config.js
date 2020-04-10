@@ -10,11 +10,15 @@ module.exports = {
             {
                 test: /\.ts|tsx|js?$/,
                 use: "ts-loader?configFile=tsconfig.build.json"
+            },
+            {
+                test: /\.html|css?$/,
+                use: "raw-loader"
             }
         ]
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js', '.html'],
         alias: {
             '@Boom/Core': path.resolve(__dirname, 'packages/Core/src'),
             '@Boom/SoundPIXI': path.resolve(__dirname, 'packages/SoundPIXI/src'),
