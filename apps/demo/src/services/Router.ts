@@ -1,4 +1,4 @@
-import DSDRouter from '@Boom/Core/src/Web/Router';
+import DSDRouter from '@Boom/Core/Web/Router';
 
 const init = (RoutesMap) => {
     const router = new DSDRouter();
