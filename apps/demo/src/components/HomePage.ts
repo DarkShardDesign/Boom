@@ -1,5 +1,5 @@
-import { createTemplate } from '@Boom/Core/Shared/Utils';
-import WebComponent from '@Boom/Core/Web/WebComponent';
+import { createTemplate } from '@Boom/Core/src/Shared/Utils';
+import WebComponent from '@Boom/Core/src/Web/WebComponent';
 
 const template = require('./template.html').default;
 const styles = require('./styles.css').default;

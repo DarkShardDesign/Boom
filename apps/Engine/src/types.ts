@@ -1,4 +1,4 @@
-import { TBOOM } from '@Boom/Core/types';
+import { TBOOM } from '@Boom/Core/src/types';
 
 declare global {
     interface Window { BOOM: TBOOM }

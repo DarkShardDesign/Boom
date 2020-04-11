@@ -20,10 +20,10 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.html'],
         alias: {
-            '@Boom/Core': path.resolve(__dirname, 'packages/Core/src'),
-            '@Boom/SoundPIXI': path.resolve(__dirname, 'packages/SoundPIXI/src'),
-            '@Boom/GraphicsPIXI': path.resolve(__dirname, 'packages/GraphicsPIXI/src'),
-            '@Boom/NetworkAxios': path.resolve(__dirname, 'packages/NetworkAxios/src')
+            '@Boom/Core': path.resolve(__dirname, 'packages/Core'),
+            '@Boom/SoundPIXI': path.resolve(__dirname, 'packages/SoundPIXI'),
+            '@Boom/GraphicsPIXI': path.resolve(__dirname, 'packages/GraphicsPIXI'),
+            '@Boom/NetworkAxios': path.resolve(__dirname, 'packages/NetworkAxios')
         }
     }
 }

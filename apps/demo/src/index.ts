@@ -1,9 +1,11 @@
-import '@Boom/Core/types';
-import { Logger, lazyLoader, waitOnWindowProperty } from '@Boom/Core/Shared/Utils';
+import "@Boom/Core/src/types";
+import { Logger, lazyLoader, waitOnWindowProperty } from '../../../packages/Core/src/Shared/Utils';
 import Router from './services/Router';
 import HomePage from './components/HomePage';
+
 const LOG_PREFIX = 'DEMO - ';
 let appLogger = new Logger(LOG_PREFIX);
+
 const init = async function () {
     appLogger.log('loading dynamic dependencies');
     lazyLoader('js/engine.bundle.js');

@@ -37,11 +37,10 @@ export declare type TUnsubscriber = () => Promise<any>;
 /**
  * Type for the internal Observable objects
  */
-export declare type IObservable = TDynamicType & {
-    _internalValue: any;
-    listen: (newVal?: any, oldVal?: any, observable?: IObservable) => TUnsubscriber;
-    unsubscribe: (listener: TListener) => any;
-};
+export interface IObservable {
+    listen: (listener: TListener) => TUnsubscriber;
+    unsubscribe: (listener: TListener) => Promise<any>;
+}
 /**
  * Type for the function used as a listener
  */

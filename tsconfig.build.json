@@ -3,27 +3,13 @@
         "lib": [ "es5", "es6", "DOM" ],
         "module": "commonjs",
         "target": "es6",
-        "composite": true,
-        "declaration": true,
-        "sourceMap": false,
-        "baseUrl": "./packages",
-        "rootDir": "./",
-        "outDir": "./dist"
+        "sourceMap": true
     },
 
     "exclude": [
         "node_modules",
         "dist",
         "tests",
-        "/**/*.spec*",
-    ],
-    
-    "include": [
-        "src/**/*",
-        "./packages/Core/src/**/*",
-        "./packages/GraphicsPIXI/src/**/*",
-        "./packages/SoundPIXI/src/**/*",
-        "./packages/NetworkAxios/src/**/*"
+        "tmp"
     ]
 }
-

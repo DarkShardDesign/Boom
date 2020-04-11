@@ -1,5 +1,6 @@
-import { Logger } from '@Boom/Core/Shared/Utils';
+
 import { ENGINE_LOG_PREFIX } from './constants';
+import { Logger } from '@Boom/Core/src/Shared/Utils';
 
 window.BOOM = {
     name: 'boom',
@@ -13,3 +14,4 @@ window.BOOM = {
     },
     logger: new Logger(ENGINE_LOG_PREFIX)
 }
+// console.log('inside engine')

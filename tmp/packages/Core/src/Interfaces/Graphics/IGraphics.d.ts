@@ -85,4 +85,7 @@ export interface IGraphics extends IModule, IResourceModule {
      */
     OnComplete: (objectHandle: TResourceHandle, handler: TEventHandler) => Promise<any>;
 }
-export {};
+declare const _default: {
+    bob: string;
+};
+export default _default;

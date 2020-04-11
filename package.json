@@ -41,7 +41,7 @@
     "dev-step2": "npx lerna run watch --parallel & nodemon dist/server.bundle.js",
     "dev-win": "yarn build && yarn dev-step2-win",
     "dev-step2-win": "start npx lerna run watch --parallel && start nodemon dist/server.bundle.js",
-    "push": "npx lerna run tests && yarn build && git push --all"
+    "push": "yarn test && yarn build && git push --all"
   },
   "heroku-post-build": true,
   "dependencies": {

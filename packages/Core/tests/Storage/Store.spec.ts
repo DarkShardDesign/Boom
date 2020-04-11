@@ -1,4 +1,4 @@
-import { Store } from 'Core/src/Storage/LocalStore';
+import { Store } from '../../src/Storage/LocalStore';
 
 describe('The Observable object', () => {
     const testPropName = 'testProp';

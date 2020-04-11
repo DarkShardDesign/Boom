@@ -6,7 +6,7 @@ const travisLaunchers = {
   }
 }
 
-const localBrowsers = realBrowser ? Object.keys(travisLaunchers) : [ 'ChromeHeadless' ]
+const localBrowsers = realBrowser ? Object.keys(travisLaunchers) : [ 'Chrome' ]
 
 const BaseConfig = {
     frameworks: [ 'jasmine', 'karma-typescript' ],
@@ -17,16 +17,15 @@ const BaseConfig = {
       'karma-spec-reporter'
     ],
     karmaTypescriptConfig: {
-      tsconfig: "./tsconfig.json",
+      tsconfig: "../../tsconfig.tests.json",
     },
     client: {
       // leave Jasmine Spec Runner output visible in browser
       clearContext: false
     },
-    files: [ { pattern: 'src/**/*.ts' }, { pattern: 'tests/**/*.spec.ts' } ],
+    files: [ { pattern: "src/**/*.ts" }, { pattern: "tests/**/*.ts" } ],
     preprocessors: {
-      'src/**/*.ts': [ 'karma-typescript' ],
-      'tests/**/*.spec.ts': [ 'karma-typescript' ]
+      '**/*.ts': [ 'karma-typescript' ]
     },
     reporters: [ 'spec', 'karma-typescript' ],
     colors: true,
