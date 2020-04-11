@@ -1,5 +1,8 @@
-import deepmerge from './deepmerge';
+export * from './deepmerge';
+export * from './typechecks';
+export * from './WebUtils';
+export * from './LazyLoader';
+export * from './Logger';
+export * from './Wait';
 
-export default {
-    deepmerge
-}
+export default { bob: ' bob '}

@@ -42,10 +42,9 @@ http.createServer(function (req, res) {
 
   fs.exists(sanitizePath, function (exist) {
     if(!exist) {
-      // if the file is not found, return 404
-      res.statusCode = 404;
-      res.end(`File ${parsedUrl.pathname} not found!`);
-      return;
+      // if the file is not found, return index.html
+      pathname = process.cwd() + filesRoot + '/index.html';
+      sanitizePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
     }
 
     // if is a directory, then look for index.html

@@ -48,10 +48,9 @@ export type TUnsubscriber = () => Promise<any>;
 /**
  * Type for the internal Observable objects
  */
-export type IObservable = TDynamicType & {
-    _internalValue: any;
-    listen: (newVal?: any, oldVal?: any, observable?: IObservable) => TUnsubscriber;
-    unsubscribe: (listener: TListener) => any;
+export interface IObservable {
+    listen: (listener:TListener) => TUnsubscriber;
+    unsubscribe: (listener: TListener) => Promise<any>;
 }
 
 /**
@@ -62,4 +61,19 @@ export type TListener = (newValue: any, oldValue: any, observable: IObservable) 
 export const enum ObservableConstants {
     ListenerRemoved = 0,
     ListenerNotFound = 1
+}
+
+export interface ILogger {
+    log: (message:string) => void;
+}
+
+export type TBOOM = {
+    name: string,
+    logger: ILogger,
+
+    init: (config?:any) => void
+}
+
+declare global {
+    interface Window { BOOM: TBOOM }
 }

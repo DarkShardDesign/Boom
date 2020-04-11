@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@Boom/Core": "^1.0.0",
     "html-webpack-plugin": "^4.0.4"
   },
   "scripts": {

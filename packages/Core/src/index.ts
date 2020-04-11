@@ -1,1 +1,1 @@
-console.log('inside Core')
+console.log('Core dumb ass')

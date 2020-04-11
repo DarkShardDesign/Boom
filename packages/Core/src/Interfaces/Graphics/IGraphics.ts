@@ -99,3 +99,7 @@ export interface IGraphics extends IModule, IResourceModule {
      */
     OnComplete: (objectHandle: TResourceHandle, handler: TEventHandler) => Promise<any>
 }
+
+export default {
+    bob: 'bob'
+}
