@@ -1,5 +1,3 @@
-import { TResourceHandle, TConfig } from '../types';
-
 /**
  * interface for engine modules that have CRUD interfaces for their resources
  */

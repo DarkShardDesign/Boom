@@ -1,8 +1,7 @@
 {
   "name": "@Boom/Core",
   "version": "1.0.0",
-  "main": "index.ts",
-  "types": "types.d.ts",
+  "main": "index",
   "license": "",
   "scripts": {
     "test-unit": "karma start karma.conf.js",
