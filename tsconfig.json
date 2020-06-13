@@ -1,13 +1,8 @@
 {
-    "extends": "./tsconfig.build.json",{
+    "extends": "./tsconfig.build.json",
     
     "compilerOptions": {
-        "output": "./temp",
-        "baseUrl": "./packages",
-        "paths": {
-            "@Boom/GraphicsPIXI": ["GraphicsPIXI/src"],
-            "@Boom/SoundPIXI": ["SoundPIXI/src"],
-            "@Boom/*": ["*/src"]
-        }
+        "outDir": "./temp",
+        "baseUrl": "./"
     }
 }

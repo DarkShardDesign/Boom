@@ -9,16 +9,19 @@ export class Logger {
     private _prefix:string;
 
     constructor (PREFIX) {
-        this._prefix = PREFIX;
+        this.prefix = PREFIX;
     }
+
+    get prefix () { return this._prefix; }
+    set prefix (val) { this._prefix = val; }
 
     /**
      * the logger function for use by Logger instances
      * will use the prefix provided during initialisation
-     * @param { string } message the message to log
+     * @param { any } message the message(s) to log
      */
-    log (message, prefix = this._prefix) {
+    log (...message) {
         // TODO: add analytics and tracking code here
-        console.log(`${prefix}${message}`)
+        console.log(`${this.prefix}`, ...message)
     }
 }

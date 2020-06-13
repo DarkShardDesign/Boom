@@ -1,5 +1,4 @@
-import { TConfig } from '../types';
-
+// import { TConfig } from "../module"
 /**
  * Module Interface
  * API for shared engine/module interaction

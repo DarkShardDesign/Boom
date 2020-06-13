@@ -3,52 +3,52 @@
  * Dynamic object
  * any properties any structure
  */
-export type TDynamicType =  {
+type TDynamicType =  {
     [key:string]: any
 }
 
 /**
  * A primitive number type to represent a resource in context
  */
-export type TResourceHandle = number;
+type TResourceHandle = number;
 
 /**
  * Dynamic config object used to pass configuration objects to modules
  */
-export type TConfig = TDynamicType;
+type TConfig = TDynamicType;
 
 // Event types
 /**
  * Dynamic data object, used to pass data into event handlers
  */
-export type TEventData = TDynamicType;
+type TEventData = TDynamicType;
 
 /**
  * event handler function signature
  */
-export type TEventHandler = (data: TEventData) => Promise<any>;
+type TEventHandler = (data: TEventData) => Promise<any>;
 
 // Network types
 /**
  * Dynamic type used to represent network data packets
  */
-export type TDataPacket = TDynamicType;
+type TDataPacket = TDynamicType;
 
 /**
  * Dynamic type used to represent server response packets
  */
-export type TResponse = TDynamicType;
+type TResponse = TDynamicType;
 
 /**
  * Type for a function returned from a subscriber function
  * This will unsubscribe from the event being listened to when invoked
  */
-export type TUnsubscriber = () => Promise<any>;
+type TUnsubscriber = () => Promise<any>;
 
 /**
  * Type for the internal Observable objects
  */
-export interface IObservable {
+interface IObservable {
     listen: (listener:TListener) => TUnsubscriber;
     unsubscribe: (listener: TListener) => Promise<any>;
 }
@@ -56,24 +56,22 @@ export interface IObservable {
 /**
  * Type for the function used as a listener
  */
-export type TListener = (newValue: any, oldValue: any, observable: IObservable) => undefined;
+type TListener = (newValue: any, oldValue: any, observable: IObservable) => undefined;
 
-export const enum ObservableConstants {
+declare const enum ObservableConstants {
     ListenerRemoved = 0,
     ListenerNotFound = 1
 }
 
-export interface ILogger {
+interface ILogger {
     log: (message:string) => void;
 }
 
-export type TBOOM = {
+type TBOOM = TDynamicType & {
+    addModule: (name, url) => Promise<any>,
     name: string,
     logger: ILogger,
 
-    init: (config?:any) => void
-}
-
-declare global {
-    interface Window { BOOM: TBOOM }
+    init: (config?:any) => void,
+    modules: TDynamicType
 }

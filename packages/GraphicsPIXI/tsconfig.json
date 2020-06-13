@@ -1,7 +1,10 @@
 {
     "extends": "../../tsconfig.json",
 
-    "compilerOptions": {
-        
-    }
+    "include": ["../Core/module.d.ts"],
+    "references": [
+        {
+            "path": "../Core"
+        }
+    ]
 }

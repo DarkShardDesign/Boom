@@ -1,4 +1,3 @@
-import { TResourceHandle, TEventHandler, TConfig } from '../../types';
 import { IResourceModule } from '../IResourceModule';
 import { IModule } from '../IModule';
 

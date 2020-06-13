@@ -1,7 +1,3 @@
-
-import { ObservableConstants, TListener, TUnsubscriber } from "../../types";
-import { IObservable } from "../../types";
-
 class Observable implements IObservable {
     private _observableListeners: Array<TListener> = [];
     private _internalValue: any;

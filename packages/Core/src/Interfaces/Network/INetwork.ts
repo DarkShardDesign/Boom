@@ -1,6 +1,43 @@
-import { TResourceHandle, TEventHandler, TDataPacket, TResponse, TUnsubscriber } from '../../types';
 import { IResourceModule } from '../IResourceModule';
 import { IModule } from '../IModule';
+
+export declare interface INetworkBypass {
+    /**
+     * Used to send data to a server instance
+     * This can be a websocket or http server type
+     * POST will be used if the server type is http
+     * @param { TResourceHandle } serverHandle the resource handle for the server to use
+     * @param { TDataPacket } data the data to send
+     * @returns { Promise<TResponse> } a promise resolving with the servers response
+     */
+    Send: (serverHandle: TResourceHandle, data: TDataPacket) => Promise<TResponse>,
+
+    /**
+     * Used to send a GET message to a server instance
+     * This can be used only with HTTP servers
+     * @param { TResourceHandle } serverHandle the resource handle for the server to use
+     * @param { TDataPacket } data any data to include in the message body
+     * @returns { Promise<TResponse> } a promise resolving with this servers response
+     */
+    Get: (serverHandle: TResourceHandle, data: TDataPacket) => Promise<TResponse>,
+
+    /**
+     * Used to send a POST message to a server instance
+     * This can only be used with HTTP Servers
+     * @param { TResourceHandle } serverHandle the resource handle for the server to use
+     * @param { TDataPacket } data the data to send with this message body
+     * @returns { Promise<TResponse> } a promise resolving with the servers response
+     */
+    Post: (serverHandle: TResourceHandle, data: TDataPacket) => Promise<TResponse>,
+
+    /**
+     * Used to send a PATCH message to a server instance
+     * @param { TResourceHandle } serverHandle the resource handle for the server to use
+     * @param { TdataPacket } data the data to send with this messages body
+     * @returns { Promise<TResponse> } a promise resolving with the servers response
+     */
+    Patch: (serverHandle: TResourceHandle, data: TDataPacket) => Promise<TResponse>,
+}
 
 /**
  * Interface defining the API between the Network manager and the engine
@@ -9,7 +46,7 @@ import { IModule } from '../IModule';
  * Server instances should either be websocket instances
  * Or HTTP API endpoints, so each end point will be treated as a separate server in this context
  */
-declare interface INetwork extends IResourceModule, IModule {
+export declare interface INetwork extends IResourceModule, IModule {
     // These should work with sockets or http servers
     /**
      * Used to send data to a server instance
@@ -101,11 +138,8 @@ declare interface INetwork extends IResourceModule, IModule {
      * intended so the interceptor can log/amend/update/replace the data packet before sending to the server
      * Can be used for both HTTP API Endpoint servers and websocket servers
      * @param { TResourceHandle } serverHandle the resouce handle for the server to use
-     * @param { string } method the original method that was being called on this server
-     * @param { TDataPacket } data the data packet to use with this request
-     * @returns { Promise<TResponse> } a promise resolving with the servers response
+     * @returns { TNetworkBypass } a wrapper object whose methods will bypass any interceptors for this server
      */
-    BypassInterceptor: (serverHandle: TResourceHandle, method: string, data: TDataPacket) => Promise<TResponse>
     // curry function returning a version of the api who's methods will bypass the interceptors
-    // BypassInterceptor : (serverHandle: TResourceHandle) => INetwork
+    BypassInterceptor : (serverHandle: TResourceHandle) => INetworkBypass
 }

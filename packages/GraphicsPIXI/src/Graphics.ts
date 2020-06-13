@@ -1,13 +1,15 @@
 import { IGraphics } from '@Boom/Core/src/Interfaces/Graphics/IGraphics';
-import { TConfig, TResourceHandle, TEventHandler } from '@Boom/Core/src/types';
 
 export class GraphicsPIXI implements IGraphics {
+    constructor() {
+        window.BOOM.logger.log('Graphics library loaded with GraphicsPixi')
+    }
     /**
      * called to initialise the module for use
      * @param {TConfig} config the config object for this module
      * @returns { Promise<any> } a promise resolving for success or rejecting with any error messages
      */
-    Init(config: TConfig) { return Promise.resolve() }
+    Init(config: TConfig) { return Promise.resolve("Graphics Library init'd") }
 
     /**
      * called to clean up this modules resources on shutdown
