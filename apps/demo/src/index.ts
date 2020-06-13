@@ -2,23 +2,28 @@ import { Logger, lazyLoader, waitOnWindowProperty } from '@Boom/Core/src/Shared/
 import Router from './services/Router';
 import HomePage from './components/HomePage';
 
+const MODULES = {
+    NETWORK: 'network'
+}
+
 const LOG_PREFIX = 'DEMO - ';
 let appLogger = new Logger(LOG_PREFIX);
 
 const init = async function () {
     appLogger.log('loading dynamic dependencies');
     await lazyLoader('js/engine.bundle.js');
+    const BOOM = window.BOOM;
 
     appLogger.log('Engine loaded');
 
     appLogger.log('Initialising the engine');
-    window.BOOM.init({});
+    BOOM.init({});
     
     appLogger.log('loading network library');
-    const networkLoader = window.BOOM.addModule('network', 'js/network-axios.bundle.js');
+    BOOM.addModule(MODULES.NETWORK, 'js/network-axios.bundle.js');
 
     appLogger.log('loading the graphics library');
-    await window.BOOM.addModule('graphics', 'js/graphics-pixi.bundle.js');
+    BOOM.addModule('graphics', 'js/graphics-pixi.bundle.js');
     
     appLogger.log('Initialising web app');
 
@@ -26,18 +31,27 @@ const init = async function () {
         {
             path: '/',
             component: HomePage
+        },
+        {
+            path: '/games',
+            component: HomePage
+        },
+        
+        {
+            path: '/games/memory',
+            component: HomePage
         }
     ]
     Router.init(RoutesMap);
 
     // test some api calls.
     // wait for the network module to complete loading (this will be handled inside the getter on the engine at a later date)
-    await networkLoader;
+    const NetworkModule = await BOOM.getModule(MODULES.NETWORK);
     // set a new endpoint for the memory game new game call
-    const memoryNewGameAPI = await window.BOOM.modules.network.CreateObject({ baseUrl: 'http://localhost', url: '/api/games/memory/newgame' });
+    const memoryNewGameAPI = await NetworkModule.CreateObject({ baseUrl: 'http://127.0.0.1', url: '/api/games/memory/newgame' });
 
     // make a call to the endpoint to get a new game
-    window.BOOM.modules.network.Get(memoryNewGameAPI)
+    NetworkModule.Get(memoryNewGameAPI)
         .then(result => appLogger.log(`received a new game response for the memory games new game api call: `, result))
 }
 

@@ -73,5 +73,7 @@ type TBOOM = TDynamicType & {
     logger: ILogger,
 
     init: (config?:any) => void,
-    modules: TDynamicType
+    modules: TDynamicType,
+
+    getModule: (name: string) => any
 }

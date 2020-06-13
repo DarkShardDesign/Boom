@@ -6,7 +6,7 @@ export default class NetworkAxios implements INetwork {
     private _endpoints: Array<any> = [];
 
     constructor () {
-        window.BOOM.logger.log('Network Library loaded using NetworkAxios')
+        window.BOOM.log('Network Library loaded using NetworkAxios')
     }
     /**
      * called to initialise the module for use

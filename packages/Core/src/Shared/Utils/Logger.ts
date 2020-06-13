@@ -22,6 +22,6 @@ export class Logger {
      */
     log (...message) {
         // TODO: add analytics and tracking code here
-        console.log(`${this.prefix}`, ...message)
+        console.log(`${this._prefix}`, ...message)
     }
 }

@@ -2,7 +2,7 @@ import { IGraphics } from '@Boom/Core/src/Interfaces/Graphics/IGraphics';
 
 export class GraphicsPIXI implements IGraphics {
     constructor() {
-        window.BOOM.logger.log('Graphics library loaded with GraphicsPixi')
+        window.BOOM.log('Graphics library loaded with GraphicsPixi')
     }
     /**
      * called to initialise the module for use
