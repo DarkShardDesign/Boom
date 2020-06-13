@@ -42,8 +42,7 @@ http.createServer(function (req, res) {
   let urlpathname = !parsedUrl.pathname || parsedUrl.pathname === '/' ? '/index.html' : parsedUrl.pathname;
   let pathname = process.cwd() + filesRoot + urlpathname;
   if (urlpathname.startsWith('/api/')) {
-    // console.log('api request received', urlpathname)
-    // console.log(req)
+    // pass into api router (this is different form the webcomponent front end router)
     router(req, res);
     return;
   }
