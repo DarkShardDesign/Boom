@@ -2,8 +2,11 @@ export default class WebComponent {
     protected componentName: string;
     protected template: string|HTMLTemplateElement;
     protected isolated: boolean;
-    protected parentElement: HTMLElement|undefined;
+    public parentElement: HTMLElement|undefined;
+    protected attributes: any;
     protected component: any;
+    protected html:any;
+    protected usedComponents: Array<any>;
 
     constructor() {
         this.componentName = 'baseComponent';
@@ -29,6 +32,11 @@ export default class WebComponent {
                 class newElement extends HTMLElement {
                     constructor () {
                         super();
+                        console.log('this', component)
+                        component.attributes = this.attributes
+                        component.html = this;
+
+                        component.beforeMount();
                         if (isolated) {
                             // append the template contents to this component instance as an encapsulated shadow dom
                             this.attachShadow({mode: 'closed'})
@@ -36,6 +44,7 @@ export default class WebComponent {
                                     template.content.cloneNode(true)
                                 );
                         }
+
                     }
 
                     connectedCallback() {
@@ -59,4 +68,6 @@ export default class WebComponent {
     unmount() {
         if (this.component) this.parentElement.removeChild(this.component);
     }
+
+    beforeMount() {}
 }

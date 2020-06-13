@@ -4,12 +4,11 @@ import WebComponent from '@Boom/Core/src/Web/WebComponent';
 const template = require('./template.html').default;
 const styles = require('./styles.css').default;
 
-export default class HomePage extends WebComponent {
+export default class Header extends WebComponent {
     constructor() {
         super();
-        this.componentName = 'home-page';
-        this.isolated = false;
-        this.parentElement = document.getElementById('app');
+        this.componentName = 'header-component';
+        this.isolated = true;
         this.template = createTemplate(styles, template);
     }
 }

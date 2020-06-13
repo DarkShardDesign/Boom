@@ -2,7 +2,7 @@
     section {
         display: flex;
         flex: 1 1 100%;
-        flex-direction: row;
+        flex-direction: column;
         color: white;
         background-color: blue;
         padding: 5px;

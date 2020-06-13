@@ -2,9 +2,8 @@ import * as http from 'http';
 import * as url from 'url';
 import * as fs from 'fs';
 import * as path from 'path';
-import { runInContext } from 'vm';
 
-import router from './router';
+import router from './server/router';
 // you can pass the parameter in the command line. e.g. node static_server.js 3000
 const port = process.argv[2] || process.env.PORT || '80';
 

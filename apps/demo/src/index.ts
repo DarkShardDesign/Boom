@@ -1,6 +1,7 @@
-import { Logger, lazyLoader, waitOnWindowProperty } from '@Boom/Core/src/Shared/Utils';
-import Router from './services/Router';
-import HomePage from './components/HomePage';
+import { Logger, lazyLoader } from '@Boom/Core/src/Shared/Utils';
+import Router from './app/services/Router';
+import HomePage from './app/components/HomePage';
+import GamesPage from './app/components/GamesPage';
 
 const MODULES = {
     NETWORK: 'network'
@@ -34,7 +35,7 @@ const init = async function () {
         },
         {
             path: '/games',
-            component: HomePage
+            component: GamesPage
         },
         
         {

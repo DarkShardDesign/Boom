@@ -10,7 +10,7 @@ const clientConfig = {
         new HtmlWebpackPlugin({
             title: 'Boom Demo\'s',
             scriptLoading: 'defer',
-            template: './src/assets/index.html',
+            template: './src/app/assets/index.html',
             filename: 'index.html'
         })
     ],
