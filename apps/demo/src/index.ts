@@ -15,10 +15,10 @@ const init = async function () {
     window.BOOM.init({});
     
     appLogger.log('loading network library');
-    window.BOOM.addModule('network', 'js/network-axios.bundle.js');
+    const networkLoader = window.BOOM.addModule('network', 'js/network-axios.bundle.js');
 
     appLogger.log('loading the graphics library');
-    window.BOOM.addModule('graphics', 'js/graphics-pixi.bundle.js');
+    await window.BOOM.addModule('graphics', 'js/graphics-pixi.bundle.js');
     
     appLogger.log('Initialising web app');
 
@@ -29,6 +29,16 @@ const init = async function () {
         }
     ]
     Router.init(RoutesMap);
+
+    // test some api calls.
+    // wait for the network module to complete loading (this will be handled inside the getter on the engine at a later date)
+    await networkLoader;
+    // set a new endpoint for the memory game new game call
+    const memoryNewGameAPI = await window.BOOM.modules.network.CreateObject({ baseUrl: 'http://localhost', url: '/api/games/memory/newgame' });
+
+    // make a call to the endpoint to get a new game
+    window.BOOM.modules.network.Get(memoryNewGameAPI)
+        .then(result => appLogger.log(`received a new game response for the memory games new game api call: `, result))
 }
 
 appLogger.log('initialising...');
