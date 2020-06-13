@@ -64,8 +64,9 @@ export default class NetworkAxios implements INetwork {
     /**
      * Used to send a GET message to a server instance
      * This can be used only with HTTP servers
+     * Appends any provided data object as query string params
      * @param { TResourceHandle } serverHandle the resource handle for the server to use
-     * @param { TDataPacket } data any data to include in the message body
+     * @param { TDataPacket } data any data as { [key]:[value] } to be used in the query string params
      * @returns { Promise<TResponse> } a promise resolving with this servers response
      */
     Get(serverHandle: TResourceHandle, data: TDataPacket): Promise<TResponse>;
@@ -73,14 +74,14 @@ export default class NetworkAxios implements INetwork {
      * Used to send a POST message to a server instance
      * This can only be used with HTTP Servers
      * @param { TResourceHandle } serverHandle the resource handle for the server to use
-     * @param { TDataPacket } data the data to send with this message body
+     * @param { TDataPacket } data the data to send with this message body (as json object)
      * @returns { Promise<TResponse> } a promise resolving with the servers response
      */
     Post(serverHandle: TResourceHandle, data: TDataPacket): Promise<TResponse>;
     /**
      * Used to send a PATCH message to a server instance
      * @param { TResourceHandle } serverHandle the resource handle for the server to use
-     * @param { TdataPacket } data the data to send with this messages body
+     * @param { TdataPacket } data the data to send with this messages body (as json object)
      * @returns { Promise<TResponse> } a promise resolving with the servers response
      */
     Patch(serverHandle: TResourceHandle, data: TDataPacket): Promise<TResponse>;

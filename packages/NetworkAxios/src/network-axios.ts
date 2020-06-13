@@ -14,6 +14,11 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a promise resolving for success or rejecting with any error messages
      */
     Init(config: TConfig): Promise<any> {
+        if (config.endpoints) {
+            config.endpoints.forEach(endpoint => {
+                this.CreateObject(endpoint);
+            });
+        }
         return Promise.resolve();
     }
 
@@ -22,6 +27,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a promise resolving for success or rejecting with any error messages
      */
     Shutdown(): Promise<any> {
+        // nothing to do at the moment (for websockets)
         return Promise.resolve();
     }
 
@@ -31,7 +37,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a a promise resolving for success or rejecting with any error messages
      */
     LoadResourceManifest(manifestURL: string): Promise<any> {
-        return Promise.resolve();
+        return Promise.reject('not implemented');
     }
 
     /**
@@ -40,7 +46,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a a promise resolving for success or rejecting with any error messages
      */
     LoadResource(resourceURL: string): Promise<any> {
-        return Promise.resolve();
+        return Promise.reject('not implemented');
     }
 
     // Generic CRUD interface
@@ -51,14 +57,9 @@ export default class NetworkAxios implements INetwork {
      */
     CreateObject(objectConfig: TConfig): Promise<TResourceHandle> {
         return new Promise(resolve => {
-            
-            /* ts-ignore */
             resolve(this._endpoints
                 .push(axios.create(objectConfig)) - 1
             );
-            // console.log('i have this', AxiosStatic)
-            // axios({});
-            // resolve(0);
         });
     }
 
@@ -70,7 +71,10 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<TResourceHandle> } a promise resolving for success or rejecting with any error messages
      */
     ReplaceObject(objectHandle: TResourceHandle, objectConfig: TConfig): Promise<TResourceHandle> {
-        return Promise.resolve(0);
+        return new Promise(res => {
+            this._endpoints[objectHandle] = axios.create(objectConfig);
+            res(objectHandle)
+        });
     }
 
     /**
@@ -80,7 +84,10 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<TResourceHandle> } a promise resolving for success or rejecting with any error messages
      */
     UpdateObject(objectHandle: TResourceHandle, objectConfig: TConfig): Promise<TResourceHandle> {
-        return Promise.resolve(0);
+        return new Promise(res => {
+            this._endpoints[objectHandle] = axios.create(objectConfig);
+            res(objectHandle);
+        });
     }
 
     /**
@@ -89,6 +96,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a promise resolving for success or rejecting with any error messages
      */
     DestroyObject(objectHandle: TResourceHandle): Promise<any> {
+        this._endpoints[objectHandle] = undefined;
         return Promise.resolve();
     }
 
@@ -102,39 +110,44 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<TResponse> } a promise resolving with the servers response
      */
     Send(serverHandle: TResourceHandle, data: TDataPacket): Promise<TResponse> {
-        return this._endpoints[serverHandle].post(data);
+        const server = this._endpoints[serverHandle];
+        return server.post(server.defaults.url, data);
     }
 
     /**
      * Used to send a GET message to a server instance
      * This can be used only with HTTP servers
+     * Appends any provided data object as query string params
      * @param { TResourceHandle } serverHandle the resource handle for the server to use
-     * @param { TDataPacket } data any data to include in the message body
+     * @param { TDataPacket } data any data as { [key]:[value] } to be used in the query string params
      * @returns { Promise<TResponse> } a promise resolving with this servers response
      */
     Get(serverHandle: TResourceHandle, data: TDataPacket): Promise<TResponse> {
-        return Promise.resolve({});
+        const server = this._endpoints[serverHandle];
+        return server.get(server.defaults.url, { params: data });
     }
 
     /**
      * Used to send a POST message to a server instance
      * This can only be used with HTTP Servers
      * @param { TResourceHandle } serverHandle the resource handle for the server to use
-     * @param { TDataPacket } data the data to send with this message body
+     * @param { TDataPacket } data the data to send with this message body (as json object)
      * @returns { Promise<TResponse> } a promise resolving with the servers response
      */
     Post(serverHandle: TResourceHandle, data: TDataPacket): Promise<TResponse> {
-        return Promise.resolve({});
+        const server = this._endpoints[serverHandle];
+        return server.post(server.defaults.url, data);
     }
 
     /**
      * Used to send a PATCH message to a server instance
      * @param { TResourceHandle } serverHandle the resource handle for the server to use
-     * @param { TdataPacket } data the data to send with this messages body
+     * @param { TdataPacket } data the data to send with this messages body (as json object)
      * @returns { Promise<TResponse> } a promise resolving with the servers response
      */
     Patch(serverHandle: TResourceHandle, data: TDataPacket): Promise<TResponse> {
-        return Promise.resolve({});
+        const server = this._endpoints[serverHandle];
+        return server.patch(server.defaults.url, data);
     }
 
     /**
@@ -146,7 +159,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { TUnsubscriber } an unsubscriber function to stop listening for these messages/types
      */
     Subscribe(serverHandle: TResourceHandle, handler: TEventHandler, type?:string): TUnsubscriber {
-        return () => Promise.resolve()
+        return () => Promise.reject('not implemented')
     }
 
     /**
@@ -158,7 +171,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a promise resolving for success or rejecting with any error messages
      */
     Unsubscribe(serverHandle: TResourceHandle, handler: TEventHandler, type?: string): Promise<any> {
-        return Promise.resolve();
+        return Promise.reject('not implemented');
     }
 
     /**
@@ -168,7 +181,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a promise resolving for success or rejecting with any error messages
      */
     UnsubscribeAll(serverHandle?: TResourceHandle): Promise<any> {
-        return Promise.resolve();
+        return Promise.reject('not implemented');
     }
 
     // optional
@@ -181,7 +194,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { TUnsubscriber } an unsubscriber function to remove this interceptor when invoked
      */
     CreateInterceptor(serverHandle: TResourceHandle, handler: TEventHandler, target?: string): TUnsubscriber {
-        return () => Promise.resolve()
+        return () => Promise.reject('not implemented')
     }
 
     /**
@@ -193,7 +206,7 @@ export default class NetworkAxios implements INetwork {
      * @returns { Promise<any> } a promise resolving for success or rejecting with any error messages
      */
     RemoveInterceptor(serverHandle: TResourceHandle, handler: TEventHandler, target?: string): Promise<any> {
-        return Promise.resolve();
+        return Promise.reject('not implemented');
     }
 
     /**
